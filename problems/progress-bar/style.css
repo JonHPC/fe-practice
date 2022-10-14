@@ -1,0 +1,13 @@
+
+.progress{
+    border:1px solid black;
+    height:20px;
+}
+
+.bar{
+    background-color:blue;
+    height:20px;
+    width:0%;
+    color:white;
+    text-align:center;
+}
