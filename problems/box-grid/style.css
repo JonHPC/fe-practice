@@ -1,0 +1,23 @@
+
+.box{
+    height:32px;
+    width:32px;
+    border:1px solid black;
+}
+
+.box-clicked{
+    background-color:blue;
+}
+
+.row{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    gap:8px;
+}
+
+.grid{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
