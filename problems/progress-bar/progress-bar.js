@@ -13,15 +13,18 @@
 (() => {
     const body = document.body
     const progressEl = document.getElementById('progress0')
-    const barEl = document.getElementById('bar0')
+    
     const startBtn = document.getElementById('start')
-
-    startBtn.addEventListener('click', startBar)
 
     let isUpdating = false
     let barId = 0
+    let currBar = 0
+
+    startBtn.addEventListener('click', startBar)
+    
     //Starts updating the first bar, if clicked again, create another bar
-    function startBar(){
+    function startBar(bar){
+        const barEl = document.getElementById(`bar${currBar}`)
         if(!isUpdating){
             isUpdating = true
             let id = setInterval(updateBar,30)
@@ -30,10 +33,16 @@
                 if(width >= 100){
                     clearInterval(id)
                     isUpdating = false
+                    if(document.getElementById(`bar${currBar}`)){
+                        currBar++
+                        startBar(currBar)
+                    }
                 }else{
-                    width++
-                    barEl.style.width = `${width}%`
-                    barEl.innerHTML = `${width}%`
+                    if(width < 100 && document.getElementById(`bar${currBar}`)){
+                        width++
+                        barEl.style.width = `${width}%`
+                        barEl.innerHTML = `${width}%`
+                    }
                 }
             }
         }else{
